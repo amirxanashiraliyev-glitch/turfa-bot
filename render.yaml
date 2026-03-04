@@ -1,7 +1,9 @@
 services:
   - type: web
-    name: telegram-php-bot
+    name: turfa-telegram-bot
     runtime: php
-    plan: free
-    buildCommand: ""
-    startCommand: php -S 0.0.0.0:$PORT
+    buildCommand: "composer install --no-dev 2>/dev/null || true"
+    startCommand: "php -S 0.0.0.0:$PORT"
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
